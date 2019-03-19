@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Top from './pages/top/Top'
+import Sandbox01 from './pages/sandbox01/Sandbox01'
 
 Vue.use(Router)
 
@@ -10,16 +11,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: Top.name,
+      component: Top
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
+      path: '/sandbox01',
+      name: Sandbox01.name,
+      component: Sandbox01
+    },
   ]
 })
