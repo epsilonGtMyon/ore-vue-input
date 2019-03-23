@@ -2,7 +2,8 @@
   <div class="comp01" style="position:relative">
     <input ref="input" type="text" @click="show">
     <template v-if="visible">
-      <div ref="area" class="area"></div>
+      <div ref="area" class="area">
+      </div>
     </template>
   </div>
 </template>
@@ -14,14 +15,21 @@ export default {
       visible: false
     };
   },
+  beforeDestroy() {
+    this.hide();
+  },
   methods: {
     show() {
-      this.visible = true;
-      document.addEventListener("click", this.handleClick, false);
+      if (!this.visible) {
+        this.visible = true;
+        document.addEventListener("click", this.handleClick, false);
+      }
     },
     hide() {
-      this.visible = false;
-      document.removeEventListener("click", this.handleClick, false);
+      if (this.visible) {
+        this.visible = false;
+        document.removeEventListener("click", this.handleClick, false);
+      }
     },
     handleClick(ev) {
       if (this.isOutSide(ev.target)) {
@@ -30,13 +38,16 @@ export default {
       }
     },
     isOutSide(eventTarget) {
-      const t = eventTarget;
-      if (t === this.$refs.input) {
+      if (eventTarget === this.$refs.input) {
         return false;
       }
-      if (t === this.$refs.area) {
-        return false;
+
+      for (let t = eventTarget; t; t = t.parentNode) {
+        if (t === this.$refs.area) {
+          return false;
+        }
       }
+
       return true;
     }
   }
