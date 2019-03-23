@@ -20,6 +20,7 @@ export default {
   .tooltip-area {
     position: absolute;
     display: none;
+    z-index:20;
   }
   &:hover .tooltip-area {
     display: block;
