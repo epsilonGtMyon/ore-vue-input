@@ -1,5 +1,5 @@
 <template>
-  <div class="comp01" style="position:relative">
+  <div class="comp01">
     <input ref="input" type="text" @click="show">
     <template v-if="visible">
       <div ref="area" class="area">
