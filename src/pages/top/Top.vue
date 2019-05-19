@@ -16,7 +16,8 @@ export default {
   data(){
     return {
       pages:[
-        {path:'/sandbox01', text:'Sandbox01'}
+        {path:'/sandbox01', text:'Sandbox01'},
+        {path:'/sandbox02', text:'Sandbox02'}
       ]
     }
   }
